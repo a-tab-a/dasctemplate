@@ -6,7 +6,6 @@
 
 \LoadClass[letterpaper,conference,11pt]{IEEEtran}
 
-
 \usepackage{mathptmx}
 \usepackage[T1]{fontenc}
 \usepackage[lmargin=0.8in,rmargin=0.8in,bmargin=1.25in,tmargin=0.8in,columnsep=0.3in]{geometry} % DASC style
@@ -81,3 +80,19 @@
 \def\tablename{Table}
 \def\thesection{\arabic{section}}                
 \def\thesubsection{\thesection.\arabic{subsection}}
+
+% remove hanging indent for references
+\defbibenvironment{bibliography}
+{\list
+	{\printtext[labelnumberwidth]{%
+			\printfield{prefixnumber}%
+			\printfield{labelnumber}}}
+	{\setlength{\labelwidth}{0pt}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{0pt}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}%
+	\renewcommand*{\makelabel}[1]{\hss##1~}}
+{\endlist}
+{\item}

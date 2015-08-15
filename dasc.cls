@@ -9,7 +9,7 @@
 \usepackage{mathptmx}
 \usepackage[T1]{fontenc}
 \usepackage[lmargin=0.8in,rmargin=0.8in,bmargin=1.25in,tmargin=0.8in,columnsep=0.3in]{geometry} % DASC style
-\usepackage{flushend}
+\usepackage[nodebug]{flushend}
 \usepackage{booktabs} 
 \usepackage{graphicx}
 \usepackage[colorlinks=false]{hyperref}
@@ -17,6 +17,9 @@
 \crefname{figure}{Figure}{Figures}
 \crefname{table}{Table}{Tables}
 \usepackage[backend=bibtex,style=ieee]{biblatex}
+
+\usepackage[font=bf, labelsep=period]{caption}
+\usepackage{subcaption}
 
 \hypersetup{hidelinks}
 
@@ -53,27 +56,6 @@
 {0.7ex plus 1ex minus 0ex}{\normalfont\Large\bfseries}}%
 \def\subsection{\@startsection{subsection}{2}{\z@}{1.5ex plus 1.5ex minus 0.5ex}%
 {0.7ex plus .5ex minus 0ex}{\normalfont\large\bfseries\itshape}}%
-
-\long\def\@makecaption#1#2{%
-% test if is a for a figure or table
-\ifx\@captype\@IEEEtablestring%
-% if a table, do table caption
-\begin{center}{\bfseries #1.~#2}\end{center}%
-\@IEEEtablecaptionsepspace
-% if not a table, format it as a figure
-\else
-% 3/2001 use footnotesize, not small; use two nonbreaking spaces, not one
-\setbox\@tempboxa\hbox{\bfseries\normalsize #1.~#2}%
-\ifdim \wd\@tempboxa >\hsize%
-% if caption is longer than a line, let it wrap around
-\setbox\@tempboxa\hbox{\bfseries\normalsize {#1.}~}%
-\parbox[t]{\hsize}{\bfseries\noindent\unhbox\@tempboxa#2}%
-% if caption is shorter than a line, center if conference, left justify otherwise
-\else%
-\ifCLASSOPTIONconference \hbox to\hsize{\bfseries\normalsize\hfil\box\@tempboxa\hfil}%
-\else \hbox to\hsize{\bfseries\normalsize\box\@tempboxa\hfil}%
-\fi\fi\fi}
-
 
 \parindent    0.3in
 \def\figurename{Figure}
